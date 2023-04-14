@@ -36,7 +36,7 @@ TILE_INDEX="$EXT/tile_index.dat"
 # python rxp-pipeline/tile_index.py -i $IDIR -t $TILE_INDEX
 
 
-# 4. CLASSIFY ---------------------------------------
+# 4. FSCT CLASSIFY (Semantic segmentation)  ---------------------------------------
 FILES=( "$DOWNSMP_DIR/15_17.downsample.ply" "$DOWNSMP_DIR/18_9.downsample.ply" )
 ODIR=$FSCT_DIR
 TILE_INDEX="$EXT/tile_index.dat"
@@ -52,7 +52,7 @@ BATCH_SIZE=6
 
 # 5. INSTANCE SEGMENTATION ---------------------------------------
 FILES="$FSCT_DIR/11_12.downsample.segmented.ply"
-ODIR="$CLOUD_DIR/2023-03-30_full_plot"
+ODIR="$CLOUD_DIR/debayan_inst_seg_check"
 N_TILES=5  # Default: 3
 OVERLAP=3  # Default: 0
 SLICE_THICKNESS=0.2  # Default: 0.2
@@ -61,7 +61,7 @@ FIND_STEMS_THICKNESS=0.5  # Default: 0.5
 FIND_STEMS_MIN_RAD=0.025  # Default: 0.025
 FIND_STEMS_MIN_PTS=200  # Default: 200
 GRAPH_EDGE_LENGTH=0.1  # Default: 1
-GRAPH_MAX_CUM_GAP=1.5  # Default is np.inf
+GRAPH_MAX_CUM_GAP=2.0  # Default is np.inf
 MIN_PTS_PER_TREE=0  # Default: 0
 ADD_LEAVES_VOXEL_LENGTH=0.2  # Default: 0.5
 ADD_LEAVES_EDGE_LENGTH=2  # Default: 1
