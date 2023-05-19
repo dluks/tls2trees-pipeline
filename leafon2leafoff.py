@@ -1,12 +1,13 @@
+#!/usr/bin/env python
 import glob
 import json
 import os
 
 import pdal
 
-src_dir = "./data/clouds/2023-01-16/qualitative-review-params/0.0"
-files = glob.glob(os.path.join(src_dir, "*.leafon.ply"))
-out_dir = os.path.join(src_dir, "csv")
+src_dir = "../2019_FrenchGuiana/TLS_segmentation/tls2trees/clouds/2023-03-30_full_plot/0.0/"
+files = glob.glob(os.path.join(src_dir, "leafon/*.leafon.ply"))
+out_dir = os.path.join(src_dir, "leafoff/csv")
 
 if not os.path.exists(out_dir):
     os.mkdir(out_dir)
