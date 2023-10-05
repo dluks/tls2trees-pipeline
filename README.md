@@ -7,6 +7,7 @@ This repository contains a bash script (`tls2trees.sh`) that implements a proces
 3. Create a tile index for the downsampled PLY files using `tile_index.py`
 4. Classify the downsampled PLY files using `fsct/run.py`
 5. Perform instance segmentation on the classified PLY files using `instance_seg_tile` (which in turn uses `points2trees.py`)
+6. Generate QSMs, select optimal QSMs, and calculate biomass using `TreeQSM`.
 
 The full pipeline can be run with
 ```bash
@@ -25,10 +26,11 @@ In order to run `ply2txt.sh` you will need to install [PDAL](https://pdal.io/en/
 
 ### Clone or fork the relevant projects
 
-In your project directory, clone [`rxp-pipeline`](https://github.com/dluks/rxp-pipeline) and [`TLS2trees`](https://github.com/dluks/TLS2trees)
+In your project directory, clone [`rxp-pipeline`](https://github.com/dluks/rxp-pipeline), [`TLS2trees`](https://github.com/dluks/TLS2trees), and [`TreeQSM`](https://github.com/dluks/TreeQSM)
 ```
 > git clone git@github.com:dluks/rxp-pipeline.git
 > git clone git@github.com:dluks/TLS2trees.git
+> git clone git@github.com:dluks/TreeQSM.git
 ```
 
 Before you can use the TLS2trees package, you first need to install it as a local, editable module:
@@ -46,6 +48,8 @@ To use the pipeline, follow these steps:
 2. Install the required software packages (see above).
 3. Modify the default values for the pipeline variables in `tls2trees.sh` as needed.
 4. Run the pipeline using the `tls2trees.sh` script.
+
+Because the QSM generation requires MATLAB, it can't be run from a bash script. For that you'll make use of `TreeQSM/src/run_qsm.m` and `TreeQSM/src/calculate_biomass.m`.
 
 ## Pipeline Steps
 
@@ -68,6 +72,12 @@ Classifies the downsampled PLY files using `TLS2trees/tls2trees/semantic.py`.
 ### 5. INSTANCE SEGMENTATION
 
 Performs instance segmentation on the classified PLY files using `instance_seg_tile` (which in turn calls `TLS2trees/tls2trees/instance.py`)
+
+### 6. QSM GENERATION
+
+1. Convert your extracted trees into `.csv` files using `ply2txt.sh`
+2. Generate the un-optimized and optimized QSMs using `TreeQSM/src/run_qsm.m`.
+2. Calculate biomass of the resulting tree models using `TreeQSM/src/calculate_biomass.m`
 
 ## Pipeline Variables
 
