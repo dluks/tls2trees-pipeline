@@ -14,7 +14,8 @@ The full pipeline can be run with
 bash tls2trees.sh
 ```
 
-Running individual steps currently requires manual commenting out of the steps that you don't want to run. An update to include desired steps as arguments to the bash script is in progress.
+> [!NOTE]
+> Running individual steps currently requires manual commenting out of the steps that you don't want to run. An update to include desired steps as arguments to the bash script is in progress.
 
 ## Requirements
 
@@ -49,7 +50,8 @@ To use the pipeline, follow these steps:
 3. Modify the default values for the pipeline variables in `tls2trees.sh` as needed.
 4. Run the pipeline using the `tls2trees.sh` script.
 
-Because the QSM generation requires MATLAB, it can't be run from a bash script. For that you'll make use of `TreeQSM/src/run_qsm.m` and `TreeQSM/src/calculate_biomass.m`.
+> [!NOTE]
+> Because the QSM generation requires MATLAB, it can't be run from a bash script. For that you'll make use of `TreeQSM/src/run_qsm.m` and `TreeQSM/src/calculate_biomass.m`.
 
 ## Pipeline Steps
 
